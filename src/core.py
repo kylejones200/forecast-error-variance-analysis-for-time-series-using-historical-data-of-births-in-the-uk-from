@@ -66,7 +66,7 @@ def calculate_multi_step_variance(c1: float, c_tau: float, mad: float, alpha: fl
 
 def plot_forecast_analysis(actual: pd.Series, fitted: pd.Series, errors: pd.Series,
                           title: str, output_path: Path):
- """Plot forecast analysis """
+    """Plot forecast analysis """
     fig, axes = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
     
     axes[0].plot(actual.index, actual.values, label="Actual", color="#4A90A4", linewidth=1.2)
