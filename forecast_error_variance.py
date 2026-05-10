@@ -70,51 +70,55 @@ def cumulative_forecast_error_variance(qL, mad, alpha=0.2):
 
 # --- Visualization Functions ---
 
-def plot_actual_vs_forecast(births, fitted_births):
-    plt.figure(figsize=(10, 6))
-    plt.plot(births.index, births['Births'], color='black', label='Actual Births')
-    plt.plot(fitted_births.index, fitted_births, color='red', linestyle='--', label='Forecasted Births')
-    plt.xlabel('Date')
-    plt.ylabel('Births')
-    plt.title('Actual vs Forecasted Births (UK)')
-    plt.legend(frameon=False)
-    plt.tight_layout()
-    plt.savefig('actual_vs_forecast_births.png')
-    plt.show()
+def plot_actual_vs_forecast(births, fitted_births, plot: bool = False):
+    if plot:
+        plt.figure(figsize=(10, 6))
+        plt.plot(births.index, births['Births'], color='black', label='Actual Births')
+        plt.plot(fitted_births.index, fitted_births, color='red', linestyle='--', label='Forecasted Births')
+        plt.xlabel('Date')
+        plt.ylabel('Births')
+        plt.title('Actual vs Forecasted Births (UK)')
+        plt.legend(frameon=False)
+        plt.tight_layout()
+        plt.savefig('actual_vs_forecast_births.png')
+        plt.show()
 
-def plot_forecast_errors(forecast_errors):
-    plt.figure(figsize=(10, 6))
-    plt.plot(forecast_errors.index, forecast_errors, color='black')
-    plt.xlabel('Date')
-    plt.ylabel('Forecast Error')
-    plt.title('Forecast Errors Over Time')
-    plt.axhline(0, color='red', linestyle='--')
-    plt.tight_layout()
-    plt.savefig('forecast_errors.png')
-    plt.show()
+def plot_forecast_errors(forecast_errors, plot: bool = False):
+    if plot:
+        plt.figure(figsize=(10, 6))
+        plt.plot(forecast_errors.index, forecast_errors, color='black')
+        plt.xlabel('Date')
+        plt.ylabel('Forecast Error')
+        plt.title('Forecast Errors Over Time')
+        plt.axhline(0, color='red', linestyle='--')
+        plt.tight_layout()
+        plt.savefig('forecast_errors.png')
+        plt.show()
 
-def plot_smoothed_errors(forecast_errors, smoothed_errors):
+def plot_smoothed_errors(forecast_errors, smoothed_errors, plot: bool = False):
     smoothed_ma = forecast_errors.rolling(window=20).mean()
-    plt.figure(figsize=(10, 6))
-    plt.plot(forecast_errors.index, smoothed_ma, color='black', label='Moving Average (20)')
-    plt.plot(forecast_errors.index, smoothed_errors, color='red', linestyle='--', label='Exponential Smoothing (α=0.2)')
-    plt.xlabel('Date')
-    plt.ylabel('Smoothed Forecast Error')
-    plt.title('Moving Average vs Exponential Smoothing of Forecast Errors')
-    plt.legend(frameon=False)
-    plt.tight_layout()
-    plt.savefig('smoothed_errors_comparison.png')
-    plt.show()
+    if plot:
+        plt.figure(figsize=(10, 6))
+        plt.plot(forecast_errors.index, smoothed_ma, color='black', label='Moving Average (20)')
+        plt.plot(forecast_errors.index, smoothed_errors, color='red', linestyle='--', label='Exponential Smoothing (α=0.2)')
+        plt.xlabel('Date')
+        plt.ylabel('Smoothed Forecast Error')
+        plt.title('Moving Average vs Exponential Smoothing of Forecast Errors')
+        plt.legend(frameon=False)
+        plt.tight_layout()
+        plt.savefig('smoothed_errors_comparison.png')
+        plt.show()
 
-def plot_forecast_error_variance_growth(steps, variances):
-    plt.figure(figsize=(8, 5))
-    plt.plot(steps, variances, marker='o', color='black')
-    plt.xlabel('Forecast Horizon (Quarters Ahead)')
-    plt.ylabel('Forecast Error Variance')
-    plt.title('Forecast Error Variance Growth')
-    plt.tight_layout()
-    plt.savefig('error_variance_growth.png')
-    plt.show()
+def plot_forecast_error_variance_growth(steps, variances, plot: bool = False):
+    if plot:
+        plt.figure(figsize=(8, 5))
+        plt.plot(steps, variances, marker='o', color='black')
+        plt.xlabel('Forecast Horizon (Quarters Ahead)')
+        plt.ylabel('Forecast Error Variance')
+        plt.title('Forecast Error Variance Growth')
+        plt.tight_layout()
+        plt.savefig('error_variance_growth.png')
+        plt.show()
 
 # --- Main Execution ---
 
