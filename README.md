@@ -33,10 +33,10 @@ Edit `config.yaml` to customize:
 ## Forecast Error Variance
 
 Analysis includes:
-- **Exponential Smoothing**: Fitted model
-- **Error Metrics**: MAD, variance, sigma approximation
-- **Multi-step Variance**: Forecast error variance growth
-- **Smoothed Errors**: Moving average and exponential smoothing
+- Exponential Smoothing: Fitted model
+- Error Metrics: MAD, variance, sigma approximation
+- Multi-step Variance: Forecast error variance growth
+- Smoothed Errors: Moving average and exponential smoothing
 
 ## Caveats
 

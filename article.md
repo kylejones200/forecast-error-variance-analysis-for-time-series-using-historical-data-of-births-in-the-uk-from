@@ -29,13 +29,13 @@ Most errors stay within a reasonable band, but there are periods where the model
 ### Estimating Expected Error
 Montgomery and Johnson describe three simple ways to estimate expected forecast error.
 
-**Simple Average**: The average forecast error across all periods was about **−113** births. This suggests a slight downward bias but close to neutral overall.
+Simple Average: The average forecast error across all periods was about −113 births. This suggests a slight downward bias but close to neutral overall.
 
 
-**Moving Average**: Using only the most recent 20 quarters, the moving average error rises to about **+805**. Recent forecasts have been slightly too low compared to actual births.
+Moving Average: Using only the most recent 20 quarters, the moving average error rises to about +805. Recent forecasts have been slightly too low compared to actual births.
 
 
-**Exponentially Smoothed Errors**: Applying exponential smoothing with α=0.2 highlights recent error trends more sharply.
+Exponentially Smoothed Errors: Applying exponential smoothing with α=0.2 highlights recent error trends more sharply.
 
 
 The chart below shows how the moving average and the exponentially smoothed errors evolve.
@@ -65,7 +65,7 @@ This pattern is plotted here:
 
 Errors grow roughly proportionally to the forecast horizon --- a common result for time series models with persistent seasonality and trend.
 
-A model can have zero average error over a long horizon and still be wrong today. Moving averages and exponential smoothing allow you to detect drift **before** it compounds into major forecast failure.
+A model can have zero average error over a long horizon and still be wrong today. Moving averages and exponential smoothing allow you to detect drift before it compounds into major forecast failure.
 
 Without simple average error, you miss long-term bias. Without moving average error, you miss model drift. Without exponential smoothing, you miss rapid shifts.
 
@@ -97,12 +97,12 @@ The first metric is the sample variance:
 
 Using the most recent 20 quarters of forecast errors:
 
-- The **sample variance** is approximately **26,255,770**.
+- The sample variance is approximately 26,255,770.
 
 This tells us that errors are spread out, even though their average might be close to zero.
 
 ### Step 2: Mean Absolute Deviation (MAD)
-Another practical measure of variability is the **mean absolute deviation (MAD)**:
+Another practical measure of variability is the mean absolute deviation (MAD):
 
 
 For the UK births forecasts:
@@ -117,7 +117,7 @@ Assuming normally distributed errors, Montgomery and Johnson show that:
 
 Applying that:
 
-- Estimated standard deviation ≈ **6,436** births.
+- Estimated standard deviation ≈ 6,436 births.
 
 This provides a quick way to move from MAD to an estimated spread without recalculating variance directly.
 
