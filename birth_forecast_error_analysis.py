@@ -12,7 +12,7 @@ def load_and_prepare_data(file_path):
     quarter_to_month = {"Mar": 3, "Jun": 6, "Sep": 9, "Dec": 12}
     df["Month"] = df["Quarter"].map(quarter_to_month)
     df["Date"] = pd.to_datetime(
-        dict(year=df["Year"].astype(int), month=df["Month"], day=1)
+        {"year": df["Year"].astype(int), "month": df["Month"], "day": 1}
     )
     df.set_index("Date", inplace=True)
     return df[["Births"]].copy()
