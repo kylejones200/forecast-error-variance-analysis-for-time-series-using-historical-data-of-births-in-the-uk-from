@@ -67,12 +67,12 @@ def calculate_multi_step_variance(c1: float, c_tau: float, mad: float, alpha: fl
 def plot_forecast_analysis(actual: pd.Series, fitted: pd.Series, errors: pd.Series,
                           title: str, output_path: Path):
     """Plot forecast analysis """
-                          if plot:
+    if plot:
         fig, axes = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
     
         axes[0].plot(actual.index, actual.values, label="Actual", color="#4A90A4", linewidth=1.2)
         axes[0].plot(fitted.index, fitted.values, label="Fitted", color="#D4A574", 
-                    linewidth=1.2, linestyle='--')
+        linewidth=1.2, linestyle='--')
         axes[0].set_ylabel("Births")
         axes[0].legend(loc='best')
     
@@ -82,9 +82,9 @@ def plot_forecast_analysis(actual: pd.Series, fitted: pd.Series, errors: pd.Seri
     
         smoothed = errors.ewm(alpha=0.2, adjust=False).mean()
         axes[2].plot(errors.index, errors.rolling(20).mean(), label="Moving Average (20)",
-                     color="#4A90A4", linewidth=1.2)
+        color="#4A90A4", linewidth=1.2)
         axes[2].plot(errors.index, smoothed, label="Exponential Smoothing (α=0.2)",
-                    color="#D4A574", linewidth=1.2, linestyle='--')
+        color="#D4A574", linewidth=1.2, linestyle='--')
         axes[2].set_xlabel("Date")
         axes[2].set_ylabel("Smoothed Error")
         axes[2].legend(loc='best')
