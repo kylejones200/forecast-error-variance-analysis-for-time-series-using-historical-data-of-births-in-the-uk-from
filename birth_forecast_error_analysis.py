@@ -1,6 +1,6 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 from statsmodels.tsa.holtwinters import ExponentialSmoothing
 
 # --- Data Loading and Preparation ---
@@ -118,7 +118,10 @@ def plot_smoothed_errors(forecast_errors, smoothed_errors, plot: bool = False):
     if plot:
         plt.figure(figsize=(10, 6))
         plt.plot(
-            forecast_errors.index, smoothed_ma, color="black", label="Moving Average (20)"
+            forecast_errors.index,
+            smoothed_ma,
+            color="black",
+            label="Moving Average (20)",
         )
         plt.plot(
             forecast_errors.index,
