@@ -81,23 +81,25 @@ def cumulative_forecast_error_variance(qL, mad, alpha=0.2):
 
 
 def plot_actual_vs_forecast(births, fitted_births, plot: bool = False):
-    if plot:
-        plt.figure(figsize=(10, 6))
-        plt.plot(births.index, births["Births"], color="black", label="Actual Births")
-        plt.plot(
-            fitted_births.index,
-            fitted_births,
-            color="red",
-            linestyle="--",
-            label="Forecasted Births",
-        )
-        plt.xlabel("Date")
-        plt.ylabel("Births")
-        plt.title("Actual vs Forecasted Births (UK)")
-        plt.legend(frameon=False)
-        plt.tight_layout()
-        plt.savefig("actual_vs_forecast_births.png")
-        plt.show()
+    if not plot:
+        return
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(births.index, births["Births"], color="black", label="Actual Births")
+    plt.plot(
+        fitted_births.index,
+        fitted_births,
+        color="red",
+        linestyle="--",
+        label="Forecasted Births",
+    )
+    plt.xlabel("Date")
+    plt.ylabel("Births")
+    plt.title("Actual vs Forecasted Births (UK)")
+    plt.legend(frameon=False)
+    plt.tight_layout()
+    plt.savefig("actual_vs_forecast_births.png")
+    plt.show()
 
 
 def plot_forecast_errors(forecast_errors, plot: bool = False):

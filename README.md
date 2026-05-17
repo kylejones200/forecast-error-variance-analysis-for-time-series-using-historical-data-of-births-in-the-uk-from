@@ -43,3 +43,11 @@ Analysis includes:
 - By default, generates synthetic UK births data.
 - Requires Excel file format for original data.
 - Multi-step variance coefficients depend on model assumptions.
+
+## Disclaimer
+
+Educational/demo code only. Not financial, safety, or engineering advice. Use at your own risk. Verify results independently before any production or operational use.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

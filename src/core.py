@@ -85,47 +85,49 @@ def plot_forecast_analysis(
     output_path: Path,
 ):
     """Plot forecast analysis"""
-    if plot:
-        fig, axes = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
+    if not plot:
+        return
 
-        axes[0].plot(
-            actual.index, actual.values, label="Actual", color="#4A90A4", linewidth=1.2
-        )
-        axes[0].plot(
-            fitted.index,
-            fitted.values,
-            label="Fitted",
-            color="#D4A574",
-            linewidth=1.2,
-            linestyle="--",
-        )
-        axes[0].set_ylabel("Births")
-        axes[0].legend(loc="best")
+    fig, axes = plt.subplots(3, 1, figsize=(10, 12), sharex=True)
 
-        axes[1].plot(errors.index, errors.values, color="#8B6F9E", linewidth=1.2)
-        axes[1].axhline(0, color="black", linewidth=0.5, linestyle="-", alpha=0.3)
-        axes[1].set_ylabel("Error")
+    axes[0].plot(
+        actual.index, actual.values, label="Actual", color="#4A90A4", linewidth=1.2
+    )
+    axes[0].plot(
+        fitted.index,
+        fitted.values,
+        label="Fitted",
+        color="#D4A574",
+        linewidth=1.2,
+        linestyle="--",
+    )
+    axes[0].set_ylabel("Births")
+    axes[0].legend(loc="best")
 
-        smoothed = errors.ewm(alpha=0.2, adjust=False).mean()
-        axes[2].plot(
-            errors.index,
-            errors.rolling(20).mean(),
-            label="Moving Average (20)",
-            color="#4A90A4",
-            linewidth=1.2,
-        )
-        axes[2].plot(
-            errors.index,
-            smoothed,
-            label="Exponential Smoothing (α=0.2)",
-            color="#D4A574",
-            linewidth=1.2,
-            linestyle="--",
-        )
-        axes[2].set_xlabel("Date")
-        axes[2].set_ylabel("Smoothed Error")
-        axes[2].legend(loc="best")
+    axes[1].plot(errors.index, errors.values, color="#8B6F9E", linewidth=1.2)
+    axes[1].axhline(0, color="black", linewidth=0.5, linestyle="-", alpha=0.3)
+    axes[1].set_ylabel("Error")
 
-        plt.tight_layout()
-        plt.savefig(output_path, dpi=100, bbox_inches="tight", facecolor="white")
-        plt.close()
+    smoothed = errors.ewm(alpha=0.2, adjust=False).mean()
+    axes[2].plot(
+        errors.index,
+        errors.rolling(20).mean(),
+        label="Moving Average (20)",
+        color="#4A90A4",
+        linewidth=1.2,
+    )
+    axes[2].plot(
+        errors.index,
+        smoothed,
+        label="Exponential Smoothing (α=0.2)",
+        color="#D4A574",
+        linewidth=1.2,
+        linestyle="--",
+    )
+    axes[2].set_xlabel("Date")
+    axes[2].set_ylabel("Smoothed Error")
+    axes[2].legend(loc="best")
+
+    plt.tight_layout()
+    plt.savefig(output_path, dpi=100, bbox_inches="tight", facecolor="white")
+    plt.close()
