@@ -1,8 +1,6 @@
 # Description: Short example for Forecast Error Variance Analysis for Time Series using Historical Data of Births in the UK from.
 
-
 # --- Data Loading and Preparation ---
-
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -162,32 +160,26 @@ def plot_forecast_error_variance_growth(steps, variances, plot: bool = False):
 if __name__ == "__main__":
     file_path = "https://github.com/kylejones200/time_series/raw/refs/heads/main/Uk%20marriage%20data-unique.xlsx"
     births = load_and_prepare_data(file_path)
-
     fitted_births = fit_forecast_births(births["Births"])
     forecast_errors = births["Births"] - fitted_births
-
     simple_avg = simple_average_error(forecast_errors)
     moving_avg = moving_average_error(forecast_errors, N=20)
     smoothed_errors = exponential_smoothing_error(forecast_errors, alpha=0.2)
     sample_var = sample_variance_error(forecast_errors, N=20)
     mad = mean_absolute_deviation(forecast_errors)
     approx_sigma = approximate_sigma_from_mad(mad)
-
     c1 = 1.0
     c_tau_3 = 2.5
     c_tau_6 = 4.5
     c_tau_12 = 8.0
     qL = 15.0
     alpha = 0.2
-
     var_3_step = multi_step_variance(c1, c_tau_3, mad, alpha)
     var_6_step = multi_step_variance(c1, c_tau_6, mad, alpha)
     var_12_step = multi_step_variance(c1, c_tau_12, mad, alpha)
     cum_var_12 = cumulative_forecast_error_variance(qL, mad, alpha)
-
     steps = np.array([1, 3, 6, 12])
     variances = np.array([sample_var, var_3_step, var_6_step, var_12_step])
-
     plot_actual_vs_forecast(births, fitted_births)
     plot_forecast_errors(forecast_errors)
     plot_smoothed_errors(forecast_errors, smoothed_errors)
