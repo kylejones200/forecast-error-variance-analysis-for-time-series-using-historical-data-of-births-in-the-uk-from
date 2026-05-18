@@ -2,6 +2,14 @@
 
 This project demonstrates forecast error variance analysis for time series forecasting.
 
+## Business context
+
+Forecasting is never about being exactly right. It is about understanding where and why errors occur --- and using that information to improve.
+
+This article uses UK births, beginning in 1837, to show how forecast error analysis works in practice. The framework follows Montgomery and Johnson's classic structure from *Forecasting and Time Series Analysis*. We are focused on the analysis of errors, not the forecasting method here.
+
+We fit a seasonal Exponential Smoothing model (additive seasonality and trend) to generate one-step-ahead forecasts. Every forecast uses only data available at the time. Errors are then calculated as:
+
 ## Article
 
 Medium article: [Forecast Error Variance Analysis for Time Series Using UK Births Data](https://medium.com/@kylejones_47003/forecast-error-variance-analysis-for-time-series-using-historical-data-of-births-in-the-uk-from-a527646a134c)
