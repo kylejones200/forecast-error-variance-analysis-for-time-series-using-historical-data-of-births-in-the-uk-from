@@ -46,7 +46,7 @@ def calculate_multi_step_variance(c1: float, c_tau: float, mad: float, alpha: fl
     var_one_step = sigma_e_approx ** 2 * (2 - alpha) / 2
     return c_tau * var_one_step
 
-def plot_forecast_analysis(actual: pd.Series, fitted: pd.Series, errors: pd.Series, title: str, output_path: Path, plot: bool = False):
+def plot_forecast_analysis(actual: pd.Series, fitted: pd.Series, errors: pd.Series, title: str, output_path: Path, plot: bool=False):
     """Plot forecast analysis"""
     if not plot:
         return
