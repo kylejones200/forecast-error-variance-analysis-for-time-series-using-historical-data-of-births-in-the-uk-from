@@ -1,0 +1,15 @@
+[package]
+name = "forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_rs"
+description = "Python bindings (PyO3) for forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+name = "forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_core = { path = "../core" }
+pyo3 = { version = "0.28", features = ["extension-module"] }
+numpy = "0.28"

@@ -1,0 +1,13 @@
+[package]
+name = "forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_bench"
+description = "Standalone Rust benchmark (no Python)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "bench"
+path = "src/main.rs"
+
+[dependencies]
+forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_core = { path = "../core" }

@@ -1,0 +1,9 @@
+[package]
+name = "forecast_error_variance_analysis_for_time_series_using_historical_data_of_births_in_the_uk_from_core"
+description = "Forecast error metrics (MSE, MAPE, RMSE)"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+path = "src/lib.rs"
